@@ -1,0 +1,113 @@
+export const report = {
+  report: [
+    {
+      millis: 44996,
+      inputADC: 144,
+      filteredInputADC: 12,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44987,
+      inputADC: 149,
+      filteredInputADC: 15,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44978,
+      inputADC: 145,
+      filteredInputADC: 14,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44968,
+      inputADC: 148,
+      filteredInputADC: 13,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44959,
+      inputADC: 147,
+      filteredInputADC: 15,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44950,
+      inputADC: 146,
+      filteredInputADC: 12,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44940,
+      inputADC: 148,
+      filteredInputADC: 16,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44931,
+      inputADC: 146,
+      filteredInputADC: 12,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44922,
+      inputADC: 149,
+      filteredInputADC: 16,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44912,
+      inputADC: 145,
+      filteredInputADC: 13,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44903,
+      inputADC: 149,
+      filteredInputADC: 15,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44894,
+      inputADC: 146,
+      filteredInputADC: 14,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44884,
+      inputADC: 148,
+      filteredInputADC: 13,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44875,
+      inputADC: 147,
+      filteredInputADC: 16,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+    {
+      millis: 44865,
+      inputADC: 146,
+      filteredInputADC: 12,
+      formattedTime: '05:07:48',
+      state: 1,
+    },
+  ],
+}
+
+export const settings = {
+  settings: { detectionThreshold: 18, sendReportIntervalMillis: 15000 },
+}
