@@ -17,21 +17,19 @@ const App = () => {
   const [detectionThreshold, setDetectionThreshold] = useState(18)
   const [sendReportInterval, setSendReportInterval] = useState(15000);
 
-  const [ws, setWs] = useState(null)
+  const [ws, setWs] = useState(null);
 
-  console.log(report)
-  console.log(settings)
+  useEffect(() => {
+    // Iniciar la conexión WebSocket
+    const websocket = new WebSocket('ws://localhost:8080');
 
-
-  const connectWs = () => {
-
-    setWs(new WebSocket("ws://" + "192.168.1.78" + ":81"))
-    ws.onopen = () => {
+    // Establecer manejadores de eventos
+    websocket.onopen = () => {
       console.log('connected')
       setconnected(true)
-    }
+    };
 
-    ws.onmessage = (e_msg) => {
+    websocket.onmessage = (e_msg) => {
       e_msg = e_msg || window.event;
       let data = e_msg.data;
       if (Object.keys(data).includes('report')) {
@@ -41,35 +39,45 @@ const App = () => {
         setDetectionThreshold(data['settings']['detectionThreshold'])
         setSendReportInterval(data['settings']['sendReportIntervalMillis'])
       }
-    }
+    };
 
-    ws.onclose = () => {
+    websocket.onerror = (error) => {
+      console.error('WebSocket error:', error);
+    };
+
+    websocket.onclose = () => {
       console.log('closed')
       setconnected(false)
-    }
-  }
-  
-  useEffect(() => {
-    connectWs();
+    };
+
+    // Guardar la referencia del WebSocket
+    setWs(websocket);
+
+    // Cerrar la conexión al desmontar el componente
     return () => {
-      ws.close();
+      websocket.close();
+    };
+  }, []);
+
+  // Función para enviar un mensaje
+  const sendMessage = (message) => {
+    if (ws) {
+      ws.send(message);
     }
-  }, [ws])
-
-  useEffect(() => {
-    ws.send(detectionThreshold + 't');
-    ws.send(sendReportInterval + 'i');
-
-  }, [detectionThreshold, sendReportInterval, ws])
+  };
   
+  useEffect(() =>{
+    sendMessage(detectionThreshold + 't');
+    sendMessage(sendReportInterval + 'i');
+  }, [detectionThreshold, sendReportInterval])
+
   useEffect(() => {
     if (lightState) {
-      // ws.send('1')
+      sendMessage('1')
     } else {
-      // ws.send('0')
+      sendMessage('0')
     }
   }, [lightState])
-
 
   return (
     <div>
